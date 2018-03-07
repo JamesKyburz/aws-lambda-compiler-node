@@ -22,4 +22,6 @@ RUN \
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && \
   . /root/.nvm/nvm.sh && \
   nvm install 6.10.3 && \
-  npm i npm@latest
+  curl -o- -L https://yarnpkg.com/install.sh | bash && \
+  /root/.yarn/bin/yarn global add npm@latest && \
+  rm /root/.nvm/versions/node/v6.10.3/lib/node_modules/npm
