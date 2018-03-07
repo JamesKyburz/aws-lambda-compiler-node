@@ -24,4 +24,4 @@ RUN \
   nvm install 6.10.3 && \
   curl -o- -L https://yarnpkg.com/install.sh | bash && \
   /root/.yarn/bin/yarn global add npm@latest && \
-  rm /root/.nvm/versions/node/v6.10.3/lib/node_modules/npm
+  rm -rf /root/.nvm/versions/node/v6.10.3/lib/node_modules/npm
