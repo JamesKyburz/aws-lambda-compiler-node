@@ -1,5 +1,7 @@
 # aws lambda compiler for node
 
+<a href="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh?autoplay=1&speed=3&size=small&preload=1"><img src="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh.png" width="380"/></a>
+
 ## 6.10.3
 
 ```sh
