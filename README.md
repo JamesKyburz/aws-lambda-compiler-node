@@ -1,5 +1,8 @@
 # aws lambda compiler for node
 
+Make sure all modules are compatible for node aws lambda (6.10.3 or 8.10.0)
+installs in a aws linux environment using a docker container.
+
 <a href="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh?autoplay=1&speed=3&size=small&preload=1"><img src="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh.png" width="380"/></a>
 
 ## 6.10.3
