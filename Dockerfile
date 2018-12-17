@@ -2,7 +2,7 @@ FROM amazonlinux:2017.03.1.20170812
 
 LABEL maintainer="James Kyburz james.kyburz@gmail.com"
 
-RUN yum install -y git git-core tar gcc-c++ make
+RUN yum install -y git git-core tar gcc-c++ make zip
 
 ENV GOPATH /root/.go
 ENV GOROOT /usr/local/go
