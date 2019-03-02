@@ -26,10 +26,10 @@ RUN \
   nvm install 10.15 && \
   curl -o- -L https://yarnpkg.com/install.sh | bash && \
   /root/.yarn/bin/yarn global add npm@latest npx@latest && \
-  rm -rf /root/.nvm/versions/node/v6.10.3/lib/node_modules/npm && \
-  rm -rf /root/.nvm/versions/node/v8.10.0/lib/node_modules/npm && \
-  rm -rf /root/.nvm/versions/node/v10.15.1/lib/node_modules/npm && \
-  rm -rf /root/.nvm/versions/node/v6.10.3/lib/node_modules/npx && \
-  rm -rf /root/.nvm/versions/node/v8.10.0/lib/node_modules/npx && \
-  rm -rf /root/.nvm/versions/node/v10.15.1/lib/node_modules/npx && \
+  rm -rf /root/.nvm/versions/node/v6.10*/lib/node_modules/npm && \
+  rm -rf /root/.nvm/versions/node/v8.10*/lib/node_modules/npm && \
+  rm -rf /root/.nvm/versions/node/v10.15*/lib/node_modules/npm && \
+  rm -rf /root/.nvm/versions/node/v6.10*/lib/node_modules/npx && \
+  rm -rf /root/.nvm/versions/node/v8.10*/lib/node_modules/npx && \
+  rm -rf /root/.nvm/versions/node/v10.15*/lib/node_modules/npx && \
   npm config set audit false
