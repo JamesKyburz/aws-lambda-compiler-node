@@ -1,4 +1,4 @@
-FROM amazonlinux:2017.03.1.20170812
+FROM amazonlinux:2.0.20190228
 
 LABEL maintainer="James Kyburz james.kyburz@gmail.com"
 
