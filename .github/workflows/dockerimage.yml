@@ -1,0 +1,30 @@
+name: Docker Image CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        amazon_tag: ['2018.03.0.20190212', '2.0.20190228']
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: >
+        cat Dockerfile-template | sed 's/${version}/${{matrix.amazon_tag}}/g' > Dockerfile &&
+        docker build . --file Dockerfile --tag aws-lambda-compiler
+    - name: Tag docker images
+      run: >
+        docker tag aws-lambda-compiler jameskyburz/aws-lambda-compiler-node:${{matrix.amazon_tag}} &&
+        docker tag aws-lambda-compiler docker.pkg.github.com/jameskyburz/aws-lambda-compiler-node/aws-lambda-compiler-node:${{matrix.amazon_tag}}
+    - name: Login to public docker registry
+      run: >
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} |
+        docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Publish to public registry
+      run: docker push jameskyburz/aws-lambda-compiler-node:${{matrix.amazon_tag}}
+    - name: Login to github registry
+      run: >
+        echo ${{ secrets.GITHUB_REGISTRY_TOKEN }} |
+        docker login docker.pkg.github.com --username JamesKyburz --password-stdin
+    - name: Publish to github registry
+      run: docker push docker.pkg.github.com/jameskyburz/aws-lambda-compiler-node/aws-lambda-compiler-node:${{matrix.amazon_tag}}

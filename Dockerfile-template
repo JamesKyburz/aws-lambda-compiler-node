@@ -1,4 +1,4 @@
-FROM amazonlinux:2.0.20190228
+FROM amazonlinux:${version}
 
 LABEL maintainer="James Kyburz james.kyburz@gmail.com"
 
@@ -24,6 +24,7 @@ RUN \
   nvm install 6.10.3 && \
   nvm install 8.10 && \
   nvm install 10.15 && \
+  nvm install 12.10 && \
   curl -o- -L https://yarnpkg.com/install.sh | bash && \
   /root/.yarn/bin/yarn global add npm@latest npx@latest && \
   rm -rf /root/.nvm/versions/node/v6.10*/lib/node_modules/npm && \
@@ -32,4 +33,5 @@ RUN \
   rm -rf /root/.nvm/versions/node/v6.10*/lib/node_modules/npx && \
   rm -rf /root/.nvm/versions/node/v8.10*/lib/node_modules/npx && \
   rm -rf /root/.nvm/versions/node/v10.15*/lib/node_modules/npx && \
+  rm -rf /root/.nvm/versions/node/v12.10*/lib/node_modules/npx && \
   npm config set audit false
