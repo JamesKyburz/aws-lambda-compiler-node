@@ -2,7 +2,7 @@
 
 AWS Lambda [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) used to install your modules.
 
-Make sure all modules are compatible for node aws lambda (6.10.3, 8.10.0, 10.15 or 12.10)
+Make sure all modules are compatible for node aws lambda (10.x or 12.x)
 installs in a aws linux environment using a docker container.
 
 <a href="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh?autoplay=1&speed=3&size=small&preload=1"><img src="https://asciinema.org/a/45cCXXLbOLQedFAv9ZvUVekhh.png" width="380"/></a>
