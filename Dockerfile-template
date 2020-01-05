@@ -13,7 +13,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 ARG NODE_VERSIONS
 
 RUN \
-  curl https://storage.googleapis.com/golang/go1.11.4.linux-amd64.tar.gz -o go.tar.gz && \
+  curl https://storage.googleapis.com/golang/go1.13.linux-amd64.tar.gz -o go.tar.gz && \
   tar -xzf go.tar.gz && \
   mv go /usr/local && \
   rm -rf go.tar.gz
