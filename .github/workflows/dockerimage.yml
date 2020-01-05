@@ -15,7 +15,7 @@ jobs:
     - name: Build the Docker image
       run: >
         cat Dockerfile-template | sed 's/${version}/${{matrix.amazon_tag}}/g' > Dockerfile &&
-        docker build . --file Dockerfile --tag aws-lambda-compiler
+        docker build --build-arg NODE_VERSIONS="6.10.3 8.10 10.15 10.18 10 12.10 12.14 12" . --file Dockerfile --tag aws-lambda-compiler
     - name: Tag docker images
       run: >
         docker tag aws-lambda-compiler jameskyburz/aws-lambda-compiler-node:${{matrix.amazon_tag}} &&
