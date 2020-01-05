@@ -31,7 +31,7 @@ RUN bash -c $'\n\
   /root/.yarn/bin/yarn global add npm@latest npx@latest\n\
   for node_version in ${NODE_VERSIONS:?}; do\n\
     for tool in npm npx; do\n\
-      rm -rf /root/.nvm/versions/node/v${node_version:}*/lib/node_modules/${tool:?}\n\
+      rm -rf /root/.nvm/versions/node/v${node_version:?}*/lib/node_modules/${tool:?}\n\
     done\n\
   done\n\
   npm config set audit false'
