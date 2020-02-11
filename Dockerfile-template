@@ -9,6 +9,8 @@ ENV GOPATH /root/.go
 ENV GOROOT /usr/local/go
 ENV PATH "/usr/local/go/bin:${PATH}"
 ENV PATH "/root/.go/bin:${PATH}"
+ENV PATH "/root/.yarn/bin:/root/.config/yarn/global/node_modules/.bin:${PATH}"
+
 ENV NPM_CONFIG_LOGLEVEL warn
 
 RUN yum install -y git git-core tar gcc-c++ make zip
