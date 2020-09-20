@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        amazon_tag: ['2018.03.0.20190212', '2.0.20190228']
+        amazon_tag: ['2.0.20190228']
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: >
         cat Dockerfile-template | sed 's/${version}/${{matrix.amazon_tag}}/g' > Dockerfile &&
-        docker build --build-arg NODE_VERSIONS="6.10.3 8.10 10.15 10.18 10 12.10 12.14 12 12.17 12.18.0 14.3 14.4.0 14" . --file Dockerfile --tag aws-lambda-compiler
+        docker build --build-arg NODE_VERSIONS="12 14" . --file Dockerfile --tag aws-lambda-compiler
     - name: Tag docker images
       run: >
         docker tag aws-lambda-compiler jameskyburz/aws-lambda-compiler-node:${{matrix.amazon_tag}} &&

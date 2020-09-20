@@ -1,3 +1,20 @@
+FROM amazonlinux:${version} as dev
+RUN yum -y groupinstall "Development Tools"
+
+FROM dev as go
+
+ENV GOPATH /root/.go
+ENV GOROOT /usr/local/go
+ENV PATH "/usr/local/go/bin:${PATH}"
+ENV PATH "/root/.go/bin:${PATH}"
+
+RUN \
+  curl https://storage.googleapis.com/golang/go1.15.1.linux-amd64.tar.gz -o go.tar.gz && \
+  tar -xzf go.tar.gz && \
+  mv go /usr/local && \
+  rm -rf go.tar.gz && \
+  go get github.com/tj/node-prune
+
 FROM amazonlinux:${version}
 
 LABEL maintainer="James Kyburz james.kyburz@gmail.com"
@@ -5,22 +22,15 @@ LABEL maintainer="James Kyburz james.kyburz@gmail.com"
 ARG NODE_VERSIONS
 RUN test -n "$NODE_VERSIONS"
 
-ENV GOPATH /root/.go
-ENV GOROOT /usr/local/go
-ENV PATH "/usr/local/go/bin:${PATH}"
 ENV PATH "/root/.go/bin:${PATH}"
 ENV PATH "/root/.yarn/bin:/root/.config/yarn/global/node_modules/.bin:${PATH}"
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
-RUN yum install -y git git-core tar gcc-c++ make zip
+COPY --from=go /root/.go/bin /root/.go/bin
 
 RUN \
-  curl https://storage.googleapis.com/golang/go1.14.3.linux-amd64.tar.gz -o go.tar.gz && \
-  tar -xzf go.tar.gz && \
-  mv go /usr/local && \
-  rm -rf go.tar.gz && \
-  go get github.com/tj/node-prune && \
+  yum install -y git git-core tar gcc-c++ make zip && \
   bash -c $'\n\
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash\n\
   . /root/.nvm/nvm.sh\n\
